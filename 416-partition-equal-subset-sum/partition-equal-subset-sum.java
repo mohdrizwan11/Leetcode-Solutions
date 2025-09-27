@@ -8,32 +8,27 @@ class Solution {
             sum = sum + nums[i];
         }
 
-        //if sum is odd, cannot partition
         if(sum % 2 != 0) return false;
 
         int half_sum = sum / 2;
-        Boolean t[][] = new Boolean[n+1][half_sum+1];  
+        boolean t[][] = new boolean[n+1][half_sum+1];
 
-        return partition(nums, half_sum, n, t); 
-    }
-
-    static boolean partition(int nums[], int half_sum, int n, Boolean t[][])
-    {
-        if(half_sum == 0) return true;
-        if(n == 0) return false;
-
-        if(t[n][half_sum] != null) return t[n][half_sum];
-
-        if(nums[n-1] > half_sum){
-            t[n][half_sum] = partition(nums, half_sum, n-1, t);
+        //Initialization
+        for(int i = 0; i < n; i++){
+            t[i][0] = true;
         }
-        else{
-            boolean include = partition(nums, half_sum - nums[n-1], n-1, t);
-            boolean exclude = partition(nums, half_sum, n-1, t);
 
-            t[n][half_sum] = include || exclude;
+        //Fill the DP table
+        for(int i = 1; i <= n; i++){
+            for(int j = 1; j <= half_sum; j++){
+                if(nums[i-1] > j){
+                    t[i][j] = t[i-1][j];
+                }
+                else{
+                    t[i][j] = t[i-1][j - nums[i-1]] || t[i-1][j];
+                }
+            }
         }
-        
         return t[n][half_sum];
     }
 }
