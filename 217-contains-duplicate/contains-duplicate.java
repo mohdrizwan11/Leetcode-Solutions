@@ -8,9 +8,7 @@ class Solution {
             if(seen.contains(num)){
                 return true;
             }
-            else{
-                seen.add(num);
-            }
+            seen.add(num);
         }
         return false; 
     }
