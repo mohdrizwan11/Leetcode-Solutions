@@ -1,16 +1,17 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) 
     {
-        Map<Integer, Integer> seenMap = new HashMap<>();
+        Set<Integer> seen = new HashSet<>();
 
         for(int num : nums)
         {
-            seenMap.put(num, seenMap.getOrDefault(num, 0) +1);
-            if(seenMap.get(num) >= 2)
-            {
+            if(seen.contains(num)){
                 return true;
             }
+            else{
+                seen.add(num);
+            }
         }
-        return false;
+        return false; 
     }
 }
