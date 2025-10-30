@@ -1,18 +1,22 @@
 class Solution {
     public int sumOfUnique(int[] nums) 
     {
-        Map<Integer, Integer> map = new HashMap<>();
+        Set<Integer> set = new HashSet<>();
+        ArrayList<Integer> unique = new ArrayList<>();
 
         for (int num : nums) {
-            map.put(num, map.getOrDefault(num, 0) + 1);
+            if (set.contains(num)) {
+                unique.remove(Integer.valueOf(num));
+            } else {
+                set.add(num);
+                unique.add(num);
+            }
         }
 
         int sum = 0;
-        for (Map.Entry<Integer, Integer> e : map.entrySet()) {
-            if (e.getValue() == 1)
-                sum += e.getKey();
+        for (int val : unique) {
+            sum += val;
         }
-
         return sum;
     }
 }
