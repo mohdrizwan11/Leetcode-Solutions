@@ -1,19 +1,19 @@
 class Solution {
     public char findTheDifference(String s, String t) {
-        Map<Character, Integer> map = new HashMap<>();
+        char s1[] = s.toCharArray();
+        char t1[] = t.toCharArray();
 
-        for(char s1 : s.toCharArray()){
-            map.put(s1, map.getOrDefault(s1,0) +1);
-        }
+        Arrays.sort(s1);
+        Arrays.sort(t1);
 
-        for(char t1 : t.toCharArray()){
-            map.put(t1, map.getOrDefault(t1,0) -1);
-
-            if(map.get(t1) < 0){
-                return t1;
+        int left = 0;
+        for(int right = 0; right < s1.length; right++){
+            if(s1[left] != t1[right]){
+                return t1[right];
             }
+            left++;
         }
 
-        return ' ';
+        return t1[t1.length - 1];
     }
 }
