@@ -3,18 +3,22 @@ class Solution {
         int n = grid.length;
         int size = n * n;
 
-        int freq[] = new int[size+1];
+        Set<Integer> set = new HashSet<>();
 
-        for(int row[]: grid){
+        int repeated = -1;
+        for(int row[] : grid){
             for(int val : row){
-                freq[val]++;
+                if(!set.add(val)){
+                    repeated = val;
+                }
             }
         }
 
-        int repeated = -1, missing = -1;
-        for(int i = 1; i <=size; i++){
-            if(freq[i] == 2) repeated = i;
-            if(freq[i] == 0) missing = i;
+        int missing = -1;
+        for(int i = 1; i <= size; i++){
+            if(!set.contains(i)){
+                missing = i;
+            }
         }
 
         return new int[]{repeated, missing};
