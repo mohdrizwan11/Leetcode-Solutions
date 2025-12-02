@@ -6,15 +6,16 @@ class Solution {
             N = -N;
         }
 
-        double ans = 1.0;
+        return pow(x, N);
+    }
+    private double pow(double x, long n){
+        if(n == 0) return 1;
+        double half = pow(x, n/2);
+        double halfSquare = half * half;
 
-        while(N > 0){
-            if((N & 1) != 0){
-                ans = ans * x;
-            }
-            x = x * x;
-            N = N >> 1;
+        if(n % 2 != 0){
+            halfSquare = x * halfSquare;
         }
-        return ans;
+        return halfSquare;
     }
 }
