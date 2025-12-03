@@ -2,13 +2,12 @@ class Solution {
     public int romanToInt(String s) {
         Map<Character, Integer> map = new HashMap<>();
 
-        map.put('I', 1);
-        map.put('V', 5);
-        map.put('X', 10);
-        map.put('L', 50);
-        map.put('C', 100);
-        map.put('D', 500);
-        map.put('M', 1000);
+        char symbols[] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+        int values[] = {1, 5, 10, 50, 100, 500, 1000};
+
+        for(int i = 0; i < symbols.length; i++){
+            map.put(symbols[i], values[i]);
+        }
 
         int total = 0;
         for(int i = 0; i < s.length(); i++){
