@@ -1,14 +1,18 @@
 class Solution {
     public List<Integer> findLonely(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
+        Set<Integer> set = new HashSet<>();
+        Set<Integer> ans = new HashSet<>();
 
         for(int num : nums){
-            map.put(num, map.getOrDefault(num, 0) +1);
+            if(set.contains(num)){
+                ans.add(num);
+            }
+            set.add(num);
         }
 
         List<Integer> result = new ArrayList<>();
-        for(int x : map.keySet()){
-            if(map.get(x) == 1 && !map.containsKey(x-1) && !map.containsKey(x+1)){
+        for(int x : set){
+            if(!ans.contains(x) && !set.contains(x-1) && !set.contains(x+1)){
                 result.add(x);
             }
         }
