@@ -1,13 +1,13 @@
 class Solution {
     public int firstMissingPositive(int[] nums) {
-        Arrays.sort(nums);
+        Set<Integer> set = new HashSet<>();
+        for(int num : nums) set.add(num);
 
         int smallest = 1;
-        for(int num : nums){
-            if(num == smallest){
-                smallest++;
-            }
+
+        while(true){
+            if(!set.contains(smallest)) return smallest;
+            smallest++;
         }
-        return smallest;
     }
 }
