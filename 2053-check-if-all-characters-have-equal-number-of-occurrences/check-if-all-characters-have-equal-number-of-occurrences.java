@@ -6,17 +6,9 @@ class Solution {
             map.put(ch, map.getOrDefault(ch, 0) + 1);
         }
 
-        List<Integer> list = new ArrayList<>(map.values());
+        Set<Integer> set = new HashSet<>(map.values());
 
-        int freq = list.get(0);
-
-        for(int num : list){
-            if(freq != num){
-                return false;
-            }
-        }
-
-        return true;
+        return set.size() == 1;
 
     }
 }
