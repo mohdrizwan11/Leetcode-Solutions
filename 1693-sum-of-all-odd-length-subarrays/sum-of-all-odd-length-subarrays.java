@@ -4,14 +4,13 @@ class Solution {
         int totalSum = 0;
 
         for(int i = 0; i < n; i++){
+            int currSum = 0;
             for(int j = i; j < n; j++){
+                currSum += arr[j];
 
                 int length = j - i + 1;
-
                 if(length % 2 == 1){
-                    for(int k = i; k <= j; k++){
-                        totalSum += arr[k];
-                    }
+                    totalSum += currSum;
                 }
             }
         }
