@@ -1,20 +1,18 @@
 class Solution {
-    public int removeDuplicates(int[] nums) 
-    {
-        // Step 1: Store unique elements while keeping order
-        Set<Integer> uniqueset = new LinkedHashSet<>();
+    public int removeDuplicates(int[] nums) {
+        Set<Integer> set = new TreeSet<>();
 
         for(int num : nums){
-            uniqueset.add(num); 
+            if(!set.contains(num)){
+                set.add(num);
+            }
         }
 
-        // Step 2: Copy unique elements back into nums
-        int index = 0;
-        for(int num : uniqueset){
-            nums[index++] = num;
+        int i = 0;
+        for(int num : set){
+            nums[i++] = num;
         }
 
-        // Step 3: Return the count of unique elements
-        return uniqueset.size();
+        return set.size();
     }
 }
