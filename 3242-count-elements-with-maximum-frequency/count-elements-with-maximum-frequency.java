@@ -9,8 +9,8 @@ class Solution {
 
         int maxFreq = Integer.MIN_VALUE;
 
-        for(Map.Entry<Integer, Integer> e : map.entrySet()){
-            maxFreq = Math.max(maxFreq, e.getValue());
+        for(Integer num : map.values()){
+            maxFreq = Math.max(maxFreq, num);
         }
         
         int sum = 0;
