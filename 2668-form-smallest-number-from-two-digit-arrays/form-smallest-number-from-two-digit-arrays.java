@@ -13,19 +13,15 @@ class Solution {
         if(common != Integer.MAX_VALUE) return common;
 
         int min1 = Integer.MAX_VALUE;
-        for(int i = 0; i < nums1.length; i++){
-            if(nums1[i] < min1){
-                min1 = nums1[i];
-            }
+        for(int num : nums1){
+            min1 = Math.min(min1, num);
         }
 
         int min2 = Integer.MAX_VALUE;
-        for(int i = 0; i < nums2.length; i++){
-            if(nums2[i] < min2){
-                min2 = nums2[i];
-            }
+        for(int num : nums2){
+            min2 = Math.min(min2, num);
         }
 
-        return (min1 > min2) ? min2*10 + min1 : min1 * 10 + min2;
+        return Math.min(min1*10 + min2, min2*10 + min1);
     }
 }
