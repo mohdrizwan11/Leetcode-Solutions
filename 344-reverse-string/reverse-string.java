@@ -1,17 +1,13 @@
 class Solution {
-    public void reverseString(char[] s) 
-    {
-        int first = 0, last = s.length - 1;
+    public void reverseString(char[] s) {
+        int n = s.length;
 
-        while (first < last) 
-        {
-            //Swap First and Last Elements
-            char temp = s[last];
-            s[last] = s[first];
-            s[first] = temp;
+        for(int i = 0; i < n / 2; i++){
+            int last = n-i-1;
 
-            first++;
-            last--;
+            char temp = s[i];
+            s[i] = s[last];
+            s[last] = temp;
         }
     }
 }
