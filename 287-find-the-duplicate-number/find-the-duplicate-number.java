@@ -1,20 +1,17 @@
 class Solution {
     public int findDuplicate(int[] nums) {
-        int slow = nums[0];
-        int fast = nums[0];
+        Map<Integer, Integer> map = new HashMap<>();
 
-        //Step 1: Detect a Cycle
-        do{
-            slow = nums[slow];
-            fast = nums[nums[fast]];
-        }while(slow != fast);
-
-        //Step 2 : Find a Duplicate
-        slow = nums[0];
-        while(slow != fast){
-            slow = nums[slow];
-            fast = nums[fast];
+        for(int num : nums){
+            map.put(num, map.getOrDefault(num, 0) + 1);
         }
-        return slow;
+
+        for(Map.Entry<Integer, Integer> e : map.entrySet()){
+            if(e.getValue() > 1){
+                return e.getKey();
+            }
+        }
+
+        return -1;
     }
 }
