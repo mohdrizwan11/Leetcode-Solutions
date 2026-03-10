@@ -3,19 +3,24 @@ class Solution {
         return builder(s);
     }
 
-    private String builder(String str){
-        StringBuilder sb = new StringBuilder();
+    private String builder(String str) {
+        Stack<Character> st = new Stack<>();
 
-        for(char ch : str.toCharArray()){
-            if(ch != '*'){
-                sb.append(ch);
-            }else{
-                if(sb.length() > 0){
-                    sb.deleteCharAt(sb.length() - 1);
+        for (char ch : str.toCharArray()) {
+            if (ch == '*') {
+                if (!st.isEmpty()) {
+                    st.pop();
                 }
+            } else {
+                st.push(ch);
             }
         }
+        StringBuilder sb = new StringBuilder();
 
+        for (char c : st) {
+            sb.append(c);
+        }
+        
         return sb.toString();
     }
 }
