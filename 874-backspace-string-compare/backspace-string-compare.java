@@ -4,16 +4,20 @@ class Solution {
     }
 
     private String builder(String str) {
-        StringBuilder sb = new StringBuilder();
+        Stack<Character> st = new Stack<>();
 
         for (char ch : str.toCharArray()) {
-            if (ch != '#') {
-                sb.append(ch);
+            if (ch == '#') {
+                if (!st.isEmpty())
+                    st.pop();
             } else {
-                if (sb.length() > 0) {
-                    sb.deleteCharAt(sb.length() - 1);
-                }
+                st.push(ch);
             }
+        }
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : st) {
+            sb.append(c);
         }
 
         return sb.toString();
