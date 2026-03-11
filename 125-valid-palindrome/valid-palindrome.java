@@ -8,9 +8,18 @@ class Solution {
             }
         }
 
-        String original = sb.toString();
-        String reverse = sb.reverse().toString();
+        String str = sb.toString();
+        int left = 0;
+        int right = str.length() - 1;
 
-        return original.equals(reverse);
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+
+        return true;
     }
 }
