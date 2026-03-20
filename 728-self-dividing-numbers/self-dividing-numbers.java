@@ -2,11 +2,10 @@ class Solution {
     public List<Integer> selfDividingNumbers(int left, int right) {
         List<Integer> result = new ArrayList<>();
 
-        while(left <= right){
-            if(isSelfDivide(left)){
-                result.add(left);
+        for(int i = left; i <= right; i++){
+            if(isSelfDivide(i)){
+                result.add(i);
             }
-            left++;
         }
 
         return result;
