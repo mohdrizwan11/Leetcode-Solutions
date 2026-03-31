@@ -1,32 +1,19 @@
 class Solution {
     public String reversePrefix(String word, char ch) {
-        int index = -1;
+       int index = -1;
 
-        //find first occurence of ch
-        for (int i = 0; i < word.length(); i++) {
+       for(int i = 0; i < word.length(); i++){
             char c = word.charAt(i);
-            if (ch == c) {
+            if(c == ch){
                 index = i;
                 break;
             }
-        }
+       }
+       if(index == -1) return word;
 
-        //if index not found return word
-        if (index == -1)
-            return word;
+       StringBuilder sb = new StringBuilder(word.substring(0, index+1));
+       sb.reverse();
 
-        char arr[] = word.toCharArray();
-        int left = 0, right = index;
-
-        //reverse from 0 to index
-        while (left < right) {
-            char temp = arr[left];
-            arr[left] = arr[right];
-            arr[right] = temp;
-            left++;
-            right--;
-        }
-
-        return new String(arr);
+       return sb.toString() + word.substring(index+1);
     }
 }
